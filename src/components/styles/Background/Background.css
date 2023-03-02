@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* blur background */
+.main {
+  position: fixed;
+  background-image: url("../../../assets//blur.png");
+  background-size: cover;
+  height: 100vh;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+}
+
+/* login-container */
+.login-container {
+  display: flex;
+  border: 1px solid black;
+  width: 63%;
+  height: 86%;
+  margin-top: 75px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+}
+
+/* blub background */
+.login-background {
+  position: sticky;
+  background-image: url("../../../assets/blub.png");
+  /* very imp to set the img properly inside a div */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  /* height: 100%; */
+  width: 60%;
+  /* very imp to set the img properly inside a div */
+  object-fit: contain;
+}
+
+/* login-welcome */
+/* .login-welcome{
+
+} */
+
+/* login-form */
+.login-form {
+  width: 40%;
+
+  /* height: 100%; */
+  /* flex-direction: column; */
+}
+
+/* login-logo */
+.login-logo {
+  width: 100%;
+  height: 100px;
+  justify-content: center;
+}
+
+.login-logo img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.login {
+  text-align: center;
+  color: #ffaa17;
+  width: 100%;
+  margin-top: 30px;
+  opacity: 100%;
+}
+
+/*login-input */
+
+.login-input {
+  padding: 2px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.login-input-password {
+  /* border: 1px solid purple; */
+  display: flex;
+  padding: 2px;
+  padding-left: 40px;
+  padding-right: 9px;
+  width: 98%;
+}
+.login-password {
+  /* border: 1px solid yellow; */
+  width: 100%;
+}
+
+.login-icon {
+  /* border: 1px solid green; */
+  width: auto;
+  position: relative;
+  top: 5px;
+  right: 30px;
+}
+
+/*login-input */
+.login-btn {
+  padding: 2px;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+}
+
+.login-break {
+  /* border: 1px solid purple; */
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.login-break hr {
+  color: white;
+}
+
+.login-footer {
+  display: flex;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.login-footer span {
+  font-size: 10px;
+  color: white;
+}
