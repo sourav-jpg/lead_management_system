@@ -63,7 +63,6 @@ function Login() {
               <InputComponent
                 variant="outlined"
                 label="Password"
-                fullW
                 size="small"
                 sx={{ fontColor: "black", mb: 3 }}
               />
