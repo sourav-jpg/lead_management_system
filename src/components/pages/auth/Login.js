@@ -6,10 +6,64 @@ import InputComponent from "../../atoms/InputComponent";
 import ButtonComponent from "../../atoms/ButtonComponent";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
-  const [employee, setEmployee] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginData, setLoginData] = useState({
+    adminUserID: "",
+    adminPassword: "",
+  });
+  const [userIdVal, setUserIdVal] = useState("");
+  const [passVal, setPassVal] = useState("");
+  const [togglePass, setTogglePass] = useState(true);
+
+  let LoginDetails = (e) => {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
+  };
+    let navigate = useNavigate();
+  console.log("----------", loginData);
+
+  const handleToggle = () => {
+    setTogglePass(!togglePass);
+  };
+
+  let userIDValidate = () => {
+    const idRegex = /^[a-zA-Z.user]/;
+    if (loginData.adminUserID) {
+      if (idRegex.test(loginData.adminUserID)) {
+        setUserIdVal("");
+        return true;
+      } else {
+        setUserIdVal("*please enter correct userID");
+      }
+    } else {
+      setUserIdVal("*please enter the userID");
+    }
+  };
+
+  const passwordValidation = () => {
+    const passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+    if (loginData.adminPassword) {
+      if (passRegex.test(loginData.adminPassword)) {
+        setPassVal("");
+        return true;
+      } else {
+        setPassVal("invalid password");
+      }
+    } else {
+      setPassVal("*password required");
+    }
+  };
+
+  let LoginDone = () => {
+    if(userIDValidate() && passwordValidation()){
+      navigate("/dashboard");
+    }
+  };
 
   return (
     <Grid className="main">
@@ -49,39 +103,112 @@ function Login() {
 
           <Grid item xs={4} className="login-input" sx={{ mt: 3 }}>
             <InputComponent
-              variant="outlined"
-              placeholder="Enter"
-              label="Employee ID"
+              type="text"
+              value={loginData.adminUserID}
+              variant="filled"
+              name="adminUserID"
+              placeholder="Enter your employeeID"
+              label="EmployeeID"
               fullWidth
               size="small"
-              sx={{ fontColor: "black", mb: 3 }}
+              color="dark"
+              focused
+              onChange={LoginDetails}
+              sx={{
+                fontColor: "black",
+
+                backgroundColor: "white",
+                borderRadius: "10px",
+                "& label.Mui-focused": {
+                  color: "black",
+                  pl: 1,
+                },
+                "& .MuiInput-underline:after": {
+                  borderBottomColor: "black",
+                  pl: 1,
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "black",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "black",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "black",
+                  },
+                },
+              }}
             />
+          </Grid>
+          <Grid sx={{ ml: 5, mb: 1 }}>
+            {userIdVal && <span className="text-danger fs-5">{userIdVal}</span>}
           </Grid>
 
           <Grid item xs={4} className="login-input-password">
             <Grid item xs={6} className="login-password">
               <InputComponent
-                variant="outlined"
-                label="Password"
+                value={loginData.adminPassword}
                 size="small"
-                sx={{ fontColor: "black", mb: 3 }}
+                variant="filled"
+                type={togglePass ? "password" : "text"}
+                label="Password"
+                name="adminPassword"
+                placeholder="Enter your password"
+                onChange={LoginDetails}
+                sx={{
+                  fontColor: "black",
+
+                  backgroundColor: "white",
+                  borderRadius: "10px",
+                  "& label.Mui-focused": {
+                    color: "black",
+                    pl: 1,
+                  },
+                  "& .MuiInput-underline:after": {
+                    borderBottomColor: "black",
+                    pl: 1,
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "black",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "black",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "black",
+                    },
+                  },
+                }}
               />
             </Grid>
             <Grid className="login-icon">
-              <VisibilityIcon />
+              {togglePass ? (
+                <VisibilityOffIcon onClick={handleToggle} />
+              ) : (
+                <VisibilityIcon onClick={handleToggle} />
+              )}
             </Grid>
           </Grid>
-
-          <Grid item xs={4} className="login-btn">
+          <Grid sx={{ ml: 5 }}>
+            {passVal && <div className="text-danger fs-5">{passVal}</div>}
+          </Grid>
+          <Grid item xs={4} className="login-btn" sx={{ mt: 5 }}>
             <Grid>
               <ButtonComponent
                 variant="outlined"
                 label="login"
+                onClick={LoginDone}
                 sx={{
                   width: "100%",
                   color: "white",
+                  p: 1,
                   backgroundColor: "#FAA81D",
                   borderRadius: "5px",
+                  "&:hover": {
+                    backgroundColor: "#FAA81D",
+                  },
                 }}
               />
             </Grid>
@@ -94,13 +221,17 @@ function Login() {
                   backgroundColor: "#909090",
                   color: "white",
                   borderRadius: "5px",
-                  borderColor: "#FAA81D",
+                  borderColor: "#909090",
+                  p: 1,
+                  "&:hover": {
+                    backgroundColor: "#909090",
+                  },
                 }}
               />
             </Grid>
           </Grid>
 
-          <Grid item xs={1} className="login-break" sx={{ mt: 25 }}>
+          <Grid item xs={1} className="login-break" sx={{ mt: 23 }}>
             <hr />
           </Grid>
 

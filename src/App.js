@@ -3,6 +3,8 @@ import Login from "./components/pages/auth/Login";
 import Batch from "./components/pages/admin/Batch";
 import Mentor from "./components/pages/admin/Mentor";
 import Request from "./components/pages/admin/Request";
+import Dashboard from "./components/pages/admin/Dashboard";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -11,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Login></Login>,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
   },
   {
     path: "/batch",

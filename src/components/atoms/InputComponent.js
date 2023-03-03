@@ -9,13 +9,19 @@ const InputComponent = ({
   id = "",
   sx = {},
   fullWidth = false,
-  size="small"
+  size="small",
+  name,
+  value,
+  type
 }) => {
   return (
     <div>
       <TextField
+        type={type}
         variant={variant}
         placeholder={placeholder}
+        name ={name}
+        value ={value}
         label={label}
         id={id}
         onChange={onChange}
