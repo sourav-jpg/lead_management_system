@@ -7,20 +7,12 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import React from "react";
 import "../../styles/Dashboard/Dashboard.css";
-import { Input, Space } from "antd";
+import { Input } from "antd";
 import logo from "../../../assets/telogo.png";
 import { Grid } from "@mui/material";
-const { Search } = Input; 
-const suffix = (
-    <SearchOutlined
-        style={{
-          position: "relative",
-          // top: "10px",
-          left:"240px"
-        }}
-    />
+import search from "../../../assets/search.png";
+import ButtonComponent from "../../atoms/ButtonComponent";
 
-);
 const onSearch = (value) => console.log(value);
 
 const { Header, Content, Sider } = Layout;
@@ -52,22 +44,33 @@ const Dashboard = () => {
   return (
     <Layout>
       <Header className="header">
-        <Grid>
-          <Grid className="logo">
+        <Grid className="logo">
             <img src={logo} alt="logo" />
-          </Grid>
-          {/*<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
+        
+          {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
         </Grid>
-        <Grid className="search">
-          <Search
-            placeholder="input search text"
-            onSearch={onSearch}
-            enterButton
-            suffix={suffix}
-          />
+        <Grid item xs={6} className="search">
+          <img
+              className="searchbaricon"
+              height="10px"
+              src={search}
+              alt="icon"
+            />
+            <input
+              className=" searchbar"
+              type="text"
+              placeholder="Search Mentor / Employee"
+            />
         </Grid>
-        <Grid>
-            
+        <Grid className="button-logout">
+            <ButtonComponent
+                label = "logout"
+                size = "small"
+                variant = "outlined"
+                fullWidth
+                sx={{width:"20%",p:0.7, pl:4, pr:4}}
+            >LogOut
+            </ButtonComponent>
         </Grid>
       </Header>
       <Layout>
@@ -77,7 +80,7 @@ const Dashboard = () => {
             background: colorBgContainer,
           }}
         >
-          <Menu
+          {/* <Menu
             mode="inline"
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
@@ -86,7 +89,7 @@ const Dashboard = () => {
               borderRight: 0,
             }}
             items={items2}
-          />
+          /> */}
         </Sider>
         <Layout
           style={{
@@ -96,6 +99,7 @@ const Dashboard = () => {
           <Breadcrumb
             style={{
               margin: "16px 0",
+              
             }}
           >
             <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -106,7 +110,7 @@ const Dashboard = () => {
             style={{
               padding: 24,
               margin: 0,
-              minHeight: 280,
+              minHeight:600,
               background: colorBgContainer,
             }}
           >

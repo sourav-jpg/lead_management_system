@@ -16,10 +16,46 @@
     background-color: white;
     display: flex;
     justify-content: space-evenly;
+     padding-right: 10;
+     position: relative;
 }
 
 .logo{
-    width:100px;
+    width:170px;
     height:200px
 }
 
+.search{
+  justify-content: center;
+  align-content: center;
+  display: flex;
+ 
+}
+
+.searchbaricon{
+  width:20px;
+  height:20px;
+  position: relative;
+  top:30%;
+  left: 35px;
+}
+
+.searchbar{
+  height:40px;
+  width: 700px;
+  border: none;
+  background-color:#F4F5F8;
+  margin: 10px auto;
+  padding:0px 50px;
+  border-radius: 5px;
+  font-size: medium;
+  color: rgb(62, 59, 59);
+}
+
+
+.button-logout{
+  justify-content: end;
+  align-items: end;
+  align-content: end;
+  
+}
