@@ -7,10 +7,13 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import React from "react";
 import "../../styles/Dashboard/Dashboard.css";
-import { Input } from "antd";
 import logo from "../../../assets/telogo.png";
 import { Grid } from "@mui/material";
 import search from "../../../assets/search.png";
+import batch from "../../../assets/batch.png";
+import mentor from "../../../assets/mentor.png";
+import request from "../../../assets/request.png";
+
 import ButtonComponent from "../../atoms/ButtonComponent";
 
 const onSearch = (value) => console.log(value);
@@ -44,13 +47,18 @@ const Dashboard = () => {
   return (
     <Layout>
       <Header className="header">
-        <Grid className="logo">
-            <img src={logo} alt="logo" />
-        
-          {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
-        </Grid>
-        <Grid item xs={6} className="search">
-          <img
+        <Grid
+          container
+          columnSpacing={7}
+          rowSpacing={2}
+          justifyContent="space-evenly"
+          display="flex"
+        >
+          <Grid item lg={2} md={2} xs={2}>
+            <img src={logo} alt="logo" width="6px" height="60px" />
+          </Grid>
+          <Grid item xs={8} lg={8} md={8} display="flex">
+            <img
               className="searchbaricon"
               height="10px"
               src={search}
@@ -61,25 +69,52 @@ const Dashboard = () => {
               type="text"
               placeholder="Search Mentor / Employee"
             />
-        </Grid>
-        <Grid className="button-logout">
+          </Grid>
+          <Grid item xs={2} lg={2} md={2}>
             <ButtonComponent
-                label = "logout"
-                size = "small"
-                variant = "outlined"
-                fullWidth
-                sx={{width:"20%",p:0.7, pl:4, pr:4}}
-            >LogOut
+              label="logout"
+              size="small"
+              variant="outlined"
+              fullWidth
+            >
+              LogOut
             </ButtonComponent>
+          </Grid>
         </Grid>
       </Header>
       <Layout>
         <Sider
-          width={200}
+          width={90}
           style={{
             background: colorBgContainer,
           }}
         >
+          <Grid
+            container
+            rowSpacing={0}
+            columnSpacing={0}
+            justifyContent="space-evenly"
+            display="grid"
+          >
+            <Grid
+              className="slider"
+              sx={{ mt: 11 }}
+              alignItems="center"
+              alignContent="center"
+            >
+              <img src={batch} style={{ color: "red" }} />
+              <h6>Batch</h6>
+            </Grid>
+            <Grid className="slider">
+              <img src={mentor} style={{ color: "red" }} />
+              <h6>Mentor</h6>
+            </Grid>
+            <Grid className="slider">
+              <img src={request} style={{ color: "red" }} />
+              <h6>Request</h6>
+            </Grid>
+          </Grid>
+
           {/* <Menu
             mode="inline"
             defaultSelectedKeys={["1"]}
@@ -99,7 +134,6 @@ const Dashboard = () => {
           <Breadcrumb
             style={{
               margin: "16px 0",
-              
             }}
           >
             <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -110,7 +144,7 @@ const Dashboard = () => {
             style={{
               padding: 24,
               margin: 0,
-              minHeight:600,
+              minHeight: 600,
               background: colorBgContainer,
             }}
           >
