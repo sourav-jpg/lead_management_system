@@ -53,6 +53,7 @@
 .slider:hover {
   color: white;
   background-color: #075575;
+  
 }
 
 .slider h6 {
@@ -63,4 +64,10 @@
   width: 50px;
   align-items: center;
   align-content: center;
+  border-color: red;
+}
+
+
+.slider img:hover{
+  /* filter: opacity(1) drop-shadow(0 0 0 white); */
 }

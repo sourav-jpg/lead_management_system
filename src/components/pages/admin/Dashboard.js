@@ -102,7 +102,7 @@ const Dashboard = () => {
               alignItems="center"
               alignContent="center"
             >
-              <img src={batch} style={{ color: "red" }} />
+              <img src={batch} style={{ filter:"drop-shadow(0 0 0 #075575)" }} />
               <h6>Batch</h6>
             </Grid>
             <Grid className="slider">
